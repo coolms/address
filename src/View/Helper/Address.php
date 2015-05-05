@@ -46,13 +46,16 @@ class Address extends AbstractHelper
         if (func_num_args() === 0) {
             return $this;
         }
+
         if (null !== $address) {
             if (null !== $locale) {
                 $this->setLocale($locale);
             }
+
             if (null !== $template) {
             	$this->setTemplate($template);
             }
+
             return $this->render($address);
         }
     }
@@ -105,6 +108,7 @@ class Address extends AbstractHelper
         if (null === $this->locale) {
             $this->setLocale(\Locale::getDefault());
         }
+
         return $this->locale;
     }
 
@@ -157,13 +161,11 @@ class Address extends AbstractHelper
         }
 
         if ($entity instanceof LegalAddressInterface) {
-            $officeNumer = $entity->getOfficeNumber();
-            if ($officeNumer) {
+            if ($officeNumer = $entity->getOfficeNumber()) {
                 $address[] = "оф. $officeNumer";
             }
         } elseif ($entity instanceof IndividualAddressInterface) {
-            $apartmentNumer = $entity->getApartmentNumber();
-            if ($apartmentNumer) {
+            if ($apartmentNumer = $entity->getApartmentNumber()) {
             	$address[] = "кв. $apartmentNumer";
             }
         }
