@@ -1,8 +1,8 @@
 <?php 
 /**
- * CoolMS2 Address module (http://www.coolms.com/)
- * 
- * @link      http://github.com/coolms/CmsAddress for the canonical source repository
+ * CoolMS2 Address Module (http://www.coolms.com/)
+ *
+ * @link      http://github.com/coolms/address for the canonical source repository
  * @copyright Copyright (c) 2006-2015 Altgraphic, ALC (http://www.altgraphic.com)
  * @license   http://www.coolms.com/license/new-bsd New BSD License
  * @author    Dmitry Popov <d.popov@altgraphic.com>
@@ -10,29 +10,26 @@
 
 namespace CmsAddress;
 
-$this->render('cms-address/address/fieldset');
-
-$this->fieldset->get('houseNumber')->setOptions([
-        'twb' => [
-            'decorators' => [
-                'col' => ['class' => 'col-xs-12 col-sm-4'],
-                'formGroup' => ['elements' => ['housing', 'officeNumber']],
-            ],
+$this->fieldset->get('houseNumber')->setOption('twbs', [
+        'col' => ['class' => 'col-xs-12 col-sm-4'],
+        'housing' => [
+            'type' => 'formGroupElement',
+            'content' => 'housing',
+            'order' => 9050,
+            'placement' => 'append',
+        ],
+        'officeNumber' => [
+            'type' => 'formGroupElement',
+            'content' => 'officeNumber',
+            'order' => 9050,
+            'placement' => 'append',
         ],
     ]);
-$this->fieldset->get('housing')->setOptions([
-        'twb' => [
-            'decorators' => [
-                'col' => ['class' => 'col-xs-12 col-sm-4'],
-            ],
-        ],
+$this->fieldset->get('housing')->setOption('twbs', [
+        'col' => ['class' => 'col-xs-12 col-sm-4'],
     ]);
-$this->fieldset->get('officeNumber')->setOptions([
-        'twb' => [
-            'decorators' => [
-                'col' => ['class' => 'col-xs-12 col-sm-4'],
-            ],
-        ],
+$this->fieldset->get('officeNumber')->setOption('twbs', [
+        'col' => ['class' => 'col-xs-12 col-sm-4'],
     ]);
 ?>
 <?= $this->formCollection($this->fieldset, true, false);
